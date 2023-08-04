@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Ventana Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <!-- Load the coco-ssd model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+  <!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+  </head>
+  <body class=" bg-pink-100 relative h-screen flex flex-col items-center justify-center">
+      <h1 class="text-4xl text-gray-800 font-bold pt-4 pb-4">
+        Model coco-ssd
+      </h1>
+
+      <div class="max-w-sm bg-white rounded overflow-hidden shadow-lg mb-4">
+        <img id="contentRenderImage" class="w-full" src="/public/cat.jpg" alt="Card Image">
+        <div class="px-6 py-4">
+          <div class="text-xl text-center mb-2">
+            Clasificador: 
+            <p id="idClassifier" class="font-normal text-gray-700 dark:text-gray-400 text-center font-bold pb-1">cat</p>
+            <p id="idPercent" class="font-normal font-bold text-white bg-green-500 text-center rounded p-2 max-w-sm">0.9%</p>
+          </div>
+        </div>
+      </div>
+
+      <label for="deviceCaptureImage" class="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Load image
+      </label>
+    <input onchange="captureImage()" id="deviceCaptureImage" type="file" class="hidden" accept="image/*" capture="camera">
+
+    <div id="loader" class="hidden absolute w-full bg-gray-800 bg-opacity-50 h-screen flex justify-center items-center">
+      <div class="loader bg-white p-5 rounded-full flex space-x-3">
+        <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+        <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+        <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+
+    <script src="/public/script/main.js"></script>
+  </body>
+</html>
